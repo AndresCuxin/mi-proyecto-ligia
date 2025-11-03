@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}MiniPOS – Registro de Venta{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <header class="wrap header">
+    {% include 'partials/header.html' %}
+  </header>
+
+  <!-- Overlay y panel deslizable -->
+  {% include 'partials/slide_menu.html' %}
+
+  <main class="wrap content-area">
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

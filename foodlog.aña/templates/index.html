@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniPOS – Registro de Venta</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="wrap header">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"></span>
+      <h1>Registro de Venta</h1>
+    </div>
+    <!-- Botón siempre visible (PC y móvil) -->
+    <button id="menu-btn" class="menu-btn" type="button">☰ Menú</button>
+  </header>
+
+  <!-- Overlay y panel deslizable (PC y móvil) -->
+  <div id="overlay" class="overlay" hidden></div>
+
+  <aside id="slide-menu" class="slide-menu" aria-hidden="true" aria-label="Menú de productos">
+    <div class="slide-head">
+      <h2>Menú</h2>
+      <button id="close-menu" class="close-menu" aria-label="Cerrar">×</button>
+    </div>
+
+    <div class="menu-search">
+      <input id="menu-filter" placeholder="Buscar producto…">
+    </div>
+
+    <!-- Se llena desde app.js -->
+    <div id="menu-list" class="menu-list" tabindex="0"></div>
+  </aside>
+
+  <main class="wrap content-area">
+    <section class="card">
+      <form id="f" class="grid" aria-label="Formulario de registro de venta">
+        <label>
+          <span>Producto</span>
+          <input name="producto" placeholder="Ej. Hamburguesa doble" required>
+        </label>
+
+        <label>
+          <span>Precio</span>
+          <input type="number" name="precio" placeholder="0.00" required step="0.01" min="0" inputmode="decimal">
+        </label>
+
+        <label>
+          <span>Cantidad</span>
+          <input type="number" name="cantidad" placeholder="1" required inputmode="numeric" min="1" value="1">
+        </label>
+
+        <label>
+          <span>Fecha</span>
+          <input type="date" name="fecha_venta" placeholder="aaaa-mm-dd">
+        </label>
+
+        <label class="wide">
+          <span>Comentarios</span>
+          <input name="comentarios" placeholder="Ej. sin mayonesa, sin cebolla">
+        </label>
+
+        <button type="submit" class="btn-primary">Agregar</button>
+      </form>
+    </section>
+
+    <section class="totals card" aria-live="polite">
+      <div class="pill">Total: <strong id="total" class="money">$0.00</strong></div>
+      <div class="pay">Cliente paga: <input id="paga" placeholder="0.00" inputmode="decimal"></div>
+      <div class="pill success">Cambio: <strong id="cambio" class="money">$0.00</strong></div>
+    </section>
+
+    <section class="card">
+      <div class="table-head"><h2>Listado</h2></div>
+      <table id="t">
+        <thead>
+          <tr>
+            <th>N.º</th><th>Producto</th><th>Precio</th><th>Cant.</th>
+            <th>Subt.</th><th>Comentarios</th><th>Fecha</th><th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
